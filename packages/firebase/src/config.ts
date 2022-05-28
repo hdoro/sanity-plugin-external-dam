@@ -53,6 +53,7 @@ const config: VendorConfiguration = {
     onSuccess,
     file,
     fileName,
+    includeFileURL,
     updateProgress,
   }) => {
     const firebaseClient = getFirebaseClient(credentials as FirebaseCredentials)
@@ -76,11 +77,14 @@ const config: VendorConfiguration = {
         onError(error)
       },
       async () => {
-        const downloadURL = await uploadTask.snapshot.ref.getDownloadURL()
+        let downloadURL: string | null = null
+        if (includeFileURL) {
+          downloadURL = await uploadTask.snapshot.ref.getDownloadURL()
+        }
         const metadata = await uploadTask.snapshot.ref.getMetadata()
 
         onSuccess({
-          fileURL: downloadURL,
+          fileURL: includeFileURL ? downloadURL : null,
           firebase: {
             bucket: metadata.bucket,
             contentDisposition: metadata.contentDisposition,

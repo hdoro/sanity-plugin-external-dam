@@ -22,6 +22,10 @@ export interface UploaderProps {
    * Whether or not we should use the file's name when uploading
    */
   storeOriginalFilename?: boolean
+  /**
+   * Whether or not to include the file URL in the Sanity document. This is useful if file URLs needs to be validated before fetched. This defaults to true.
+   */
+  includeFileURL?: boolean
 
   // FIELD INPUT CONTEXT
   /**

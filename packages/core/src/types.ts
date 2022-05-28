@@ -50,6 +50,10 @@ export interface VendorConfiguration {
      */
     fileName: string
     /**
+     * Whether or not to include the file URL in the Sanity document. This is useful if file URLs needs to be validated before fetched. This defaults to true.
+     */
+    includeFileURL: boolean
+    /**
      * Credentials as configured by your plugin.
      */
     credentials: VendorCredentials

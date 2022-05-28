@@ -25,6 +25,7 @@ const useUpload = ({
   vendorConfig,
   sanityClient,
   storeOriginalFilename = true,
+  includeFileURL = true,
   onSuccess,
 }: UploaderProps): useUploadReturn => {
   const toast = useToast()
@@ -51,6 +52,7 @@ const useUpload = ({
             file: context.file as File,
             storeOriginalFilename,
           }),
+          includeFileURL,
           onError: (error) =>
             callback({
               type: 'VENDOR_ERROR',
