@@ -300,6 +300,20 @@ const uploadMachine = createMachine<Context, UploadEvent>(
           ],
         },
         {
+          target: 'uploadingToVendor',
+          cond: (_context, event, { state }) =>
+            (['idle', 'failure'].some(state.matches) &&
+              event.file?.type != null) ||
+            false,
+          actions: [
+            assign({
+              file: (_context, event) => {
+                return event.file
+              },
+            }),
+          ],
+        },
+        {
           // Else, show a toast
           actions: 'invalidFileToast',
         },

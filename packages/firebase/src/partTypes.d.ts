@@ -1,1 +1,1 @@
-declare module 'config:firebase-dam'
+declare module 'config:firebase-dam?'

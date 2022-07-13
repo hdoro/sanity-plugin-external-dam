@@ -1,3 +1,4 @@
+import pluginConfig from 'config:digital-ocean-files?';
 import { VendorConfiguration } from 'sanity-plugin-external-dam/lib/types'
 import {
   LockIcon,
@@ -10,11 +11,13 @@ import {
 
 export const DEFAULT_ACCEPT = ['video/*', 'audio/*']
 
+const { defaultAccept, toolTitle } = pluginConfig ?? {};
+
 const config: VendorConfiguration = {
   id: 'digital-ocean-files',
   customDataFieldName: 'digitalOcean',
-  defaultAccept: DEFAULT_ACCEPT,
-  toolTitle: 'Videos & audio (DigitalOcean)',
+  defaultAccept: defaultAccept ?? DEFAULT_ACCEPT,
+  toolTitle: toolTitle ?? 'Videos & audio (DigitalOcean)',
   credentialsFields: [
     {
       name: 'bucketKey',

@@ -1,1 +1,1 @@
-declare module 'config:s3-dam'
+declare module 'config:s3-dam?'
